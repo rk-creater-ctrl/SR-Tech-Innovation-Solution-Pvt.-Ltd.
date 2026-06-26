@@ -1,5 +1,8 @@
 (function () {
   const whatsappNumber = "916266324835";
+  const brandName = "SR Tech Innovation & Solution Pvt. Ltd.";
+  const brandMain = "SR Tech Innovation";
+  const brandSub = "Solution Pvt. Ltd.";
 
   const fallbackLinks = {
     x: "https://x.com/_CodeNexus",
@@ -295,17 +298,17 @@
     const socials = [
       {
         name: "x",
-        label: "Follow CodeNexus on X",
+        label: `Follow ${brandName} on X`,
         href: findFooterLink((href) => href.includes("x.com") || href.includes("twitter.com"), fallbackLinks.x)
       },
       {
         name: "instagram",
-        label: "Follow CodeNexus on Instagram",
+        label: `Follow ${brandName} on Instagram`,
         href: findFooterLink((href) => href.includes("instagram.com"), fallbackLinks.instagram)
       },
       {
         name: "whatsapp",
-        label: "Chat with CodeNexus on WhatsApp",
+        label: `Chat with ${brandName} on WhatsApp`,
         href: findFooterLink((href) => href.includes("wa.me") || href.includes("whatsapp"), fallbackLinks.whatsapp)
       }
     ];
@@ -374,13 +377,13 @@
       const brand = document.createElement("a");
       brand.className = "cn-brand-pill";
       brand.href = "index.html";
-      brand.setAttribute("aria-label", "CodeNexus Home");
+      brand.setAttribute("aria-label", `${brandName} Home`);
       logo.replaceWith(brand);
       brand.appendChild(logo);
 
       const brandText = document.createElement("span");
       brandText.className = "cn-brand-text";
-      brandText.innerHTML = '<span class="cn-brand-main">CodeNexus</span><span class="cn-brand-sub">Tech Solutions</span>';
+      brandText.innerHTML = `<span class="cn-brand-main">${brandMain}</span><span class="cn-brand-sub">${brandSub}</span>`;
       brand.appendChild(brandText);
 
       const navLinks = document.createElement("div");
@@ -503,7 +506,7 @@
 
   function buildFormMessage(form) {
     const title = form.dataset.formTitle || "Project Inquiry";
-    const lines = [`Hello CodeNexus, I want to discuss: ${title}`];
+    const lines = [`Hello ${brandName}, I want to discuss: ${title}`];
     const fields = Array.from(form.querySelectorAll("input[name], select[name], textarea[name]"));
 
     fields.forEach((field) => {
@@ -550,8 +553,8 @@
 
   function attachOrderButtons() {
     document.querySelectorAll("[data-order-service]").forEach((button) => {
-      const service = button.dataset.orderService || "a CodeNexus service";
-      const message = `Hello CodeNexus, I want to order or discuss: ${service}\nPlease share package details and next steps.`;
+      const service = button.dataset.orderService || `a ${brandName} service`;
+      const message = `Hello ${brandName}, I want to order or discuss: ${service}\nPlease share package details and next steps.`;
       button.setAttribute("href", buildWhatsappUrl(message));
       button.setAttribute("target", "_blank");
       button.setAttribute("rel", "noopener");
@@ -609,12 +612,12 @@
       }
 
       const href = (link.getAttribute("href") || "").toLowerCase();
-      let label = "Connect with CodeNexus";
-      if (href.includes("linkedin")) label = "CodeNexus on LinkedIn";
-      if (href.includes("github")) label = "CodeNexus on GitHub";
-      if (href.includes("instagram")) label = "CodeNexus on Instagram";
-      if (href.includes("x.com") || href.includes("twitter")) label = "CodeNexus on X";
-      if (href.includes("wa.me")) label = "Chat with CodeNexus on WhatsApp";
+      let label = `Connect with ${brandName}`;
+      if (href.includes("linkedin")) label = `${brandName} on LinkedIn`;
+      if (href.includes("github")) label = `${brandName} on GitHub`;
+      if (href.includes("instagram")) label = `${brandName} on Instagram`;
+      if (href.includes("x.com") || href.includes("twitter")) label = `${brandName} on X`;
+      if (href.includes("wa.me")) label = `Chat with ${brandName} on WhatsApp`;
       link.setAttribute("aria-label", label);
       link.title = label;
     });
@@ -637,7 +640,7 @@
 
     if (typeof window.gtag === "function") {
       window.gtag("event", action, {
-        event_category: "CodeNexus",
+        event_category: brandName,
         event_label: detail.label
       });
     }

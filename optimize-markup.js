@@ -3,143 +3,146 @@ const path = require("path");
 
 const root = __dirname;
 const baseUrl = "https://rk-creater-ctrl.github.io/CodeNexus";
-const defaultImage = `${baseUrl}/logo.png`;
+const brandName = "SR Tech Innovation & Solution Pvt. Ltd.";
+const logoFile = "company_logo.png";
+const defaultImage = `${baseUrl}/${logoFile}`;
 const today = "2026-06-07";
 
 const pageMeta = {
   "index.html": {
-    title: "CodeNexus | Websites, School Software, AI Chatbots & Automation",
-    description: "CodeNexus builds professional websites, school management systems, website + ERP bundles, AI chatbots, Python automation tools, and maintenance packages for schools and small businesses.",
+    title: `${brandName} | Websites, School Software, AI Chatbots & Automation`,
+    description: `${brandName} builds professional websites, school management systems, website + ERP bundles, AI chatbots, Python automation tools, and maintenance packages for schools and small businesses.`,
     priority: "1.0",
     changefreq: "weekly"
   },
   "about.html": {
-    title: "About CodeNexus | Technology Service Studio",
-    description: "Learn about CodeNexus, a Rewa-based technology service studio led by Ritik Kushwaha for websites, AI tools, Python software, robotics, and school digital systems.",
+    title: `About ${brandName} | Technology Service Studio`,
+    description: `Learn about ${brandName}, a Rewa-based technology service studio led by Ritik Kushwaha for websites, AI tools, Python software, robotics, and school digital systems.`,
     priority: "0.7",
     changefreq: "monthly"
   },
   "services.html": {
-    title: "Services | CodeNexus",
-    description: "Explore CodeNexus services for web development, school websites, school management systems, website + ERP software, AI chatbots, Python software, dashboards, robotics, IoT, and website maintenance.",
+    title: `Services | ${brandName}`,
+    description: `Explore ${brandName} services for web development, school websites, school management systems, website + ERP software, AI chatbots, Python software, dashboards, robotics, IoT, and website maintenance.`,
     priority: "0.9",
     changefreq: "weekly"
   },
   "pricing.html": {
-    title: "Pricing & Service Packages | CodeNexus",
-    description: "Compare CodeNexus pricing for business websites, school websites, ERP software, AI chatbots, Python tools, landing pages, maintenance, dashboards, and IoT projects.",
+    title: `Pricing & Service Packages | ${brandName}`,
+    description: `Compare ${brandName} pricing for business websites, school websites, ERP software, AI chatbots, Python tools, landing pages, maintenance, dashboards, and IoT projects.`,
     priority: "0.9",
     changefreq: "weekly"
   },
   "order.html": {
-    title: "Request a Quote | CodeNexus",
-    description: "Send a project inquiry to CodeNexus for websites, school software, AI chatbots, Python automation, dashboards, maintenance, robotics, or custom digital solutions.",
+    title: `Request a Quote | ${brandName}`,
+    description: `Send a project inquiry to ${brandName} for websites, school software, AI chatbots, Python automation, dashboards, maintenance, robotics, or custom digital solutions.`,
     priority: "0.9",
     changefreq: "weekly"
   },
   "projects.html": {
-    title: "Client Work & Project Samples | CodeNexus",
-    description: "View CodeNexus project samples including school websites, school management systems, AI chatbots, Python tools, automation projects, dashboards, and live website demos.",
+    title: `Client Work & Project Samples | ${brandName}`,
+    description: `View ${brandName} project samples including school websites, school management systems, AI chatbots, Python tools, automation projects, dashboards, and live website demos.`,
     priority: "0.8",
     changefreq: "monthly"
   },
   "contact.html": {
-    title: "Contact CodeNexus | WhatsApp, Email & Project Inquiry",
-    description: "Contact CodeNexus in Rewa, Madhya Pradesh for websites, school management software, AI chatbots, Python automation, dashboards, robotics, and maintenance projects.",
+    title: `Contact ${brandName} | WhatsApp, Email & Project Inquiry`,
+    description: `Contact ${brandName} in Rewa, Madhya Pradesh for websites, school management software, AI chatbots, Python automation, dashboards, robotics, and maintenance projects.`,
     priority: "0.8",
     changefreq: "monthly"
   },
   "web_development.html": {
-    title: "Web Development Services | CodeNexus",
-    description: "Professional web development services by CodeNexus for responsive business websites, landing pages, portfolios, school websites, SEO setup, and GitHub Pages deployment.",
+    title: `Web Development Services | ${brandName}`,
+    description: `Professional web development services by ${brandName} for responsive business websites, landing pages, portfolios, school websites, SEO setup, and GitHub Pages deployment.`,
     priority: "0.6",
     changefreq: "monthly"
   },
   "AI.html": {
-    title: "AI Solutions | CodeNexus",
-    description: "AI solutions by CodeNexus for chatbots, lead assistants, FAQ automation, support workflows, computer vision concepts, and business automation planning.",
+    title: `AI Solutions | ${brandName}`,
+    description: `AI solutions by ${brandName} for chatbots, lead assistants, FAQ automation, support workflows, computer vision concepts, and business automation planning.`,
     priority: "0.6",
     changefreq: "monthly"
   },
   "ai-chatbot.html": {
-    title: "AI Chatbot Development | CodeNexus",
-    description: "AI chatbot development by CodeNexus for FAQ automation, lead capture, website assistant workflows, customer support, and content-based business inquiries.",
+    title: `AI Chatbot Development | ${brandName}`,
+    description: `AI chatbot development by ${brandName} for FAQ automation, lead capture, website assistant workflows, customer support, and content-based business inquiries.`,
     priority: "0.85",
     changefreq: "weekly"
   },
   "python-software.html": {
-    title: "Custom Python Software | CodeNexus",
-    description: "Custom Python software development by CodeNexus for automation, billing tools, PDF and QR generators, attendance tools, data reports, desktop utilities, and workflow apps.",
+    title: `Custom Python Software | ${brandName}`,
+    description: `Custom Python software development by ${brandName} for automation, billing tools, PDF and QR generators, attendance tools, data reports, desktop utilities, and workflow apps.`,
     priority: "0.85",
     changefreq: "weekly"
   },
   "pyhton.html": {
-    title: "Python Development Moved | CodeNexus",
-    description: "The old Python development page now redirects to the current CodeNexus custom Python software service page.",
+    title: `Python Development Moved | ${brandName}`,
+    description: `The old Python development page now redirects to the current ${brandName} custom Python software service page.`,
     canonical: `${baseUrl}/python-software.html`,
     priority: "0.1",
     changefreq: "yearly",
     excludeFromSitemap: true
   },
   "Robotics.html": {
-    title: "Robotics & IoT Projects | CodeNexus",
-    description: "Robotics and IoT project support by CodeNexus for Arduino builds, ESP32 prototypes, sensors, automation concepts, wiring guidance, and project documentation.",
+    title: `Robotics & IoT Projects | ${brandName}`,
+    description: `Robotics and IoT project support by ${brandName} for Arduino builds, ESP32 prototypes, sensors, automation concepts, wiring guidance, and project documentation.`,
     priority: "0.6",
     changefreq: "monthly"
   },
   "school-website.html": {
-    title: "School Website Development | CodeNexus",
-    description: "Affordable school website development by CodeNexus with admission pages, notices, gallery, academics, contact forms, WhatsApp inquiry, SEO setup, and GitHub Pages deployment.",
+    title: `School Website Development | ${brandName}`,
+    description: `Affordable school website development by ${brandName} with admission pages, notices, gallery, academics, contact forms, WhatsApp inquiry, SEO setup, and GitHub Pages deployment.`,
     priority: "0.95",
     changefreq: "weekly"
   },
   "school-management-system.html": {
-    title: "School Management System | CodeNexus",
-    description: "School management system development by CodeNexus for attendance, students, staff, marksheets, reports, fee records, admin workflows, and custom school modules.",
+    title: `School Management System | ${brandName}`,
+    description: `School management system development by ${brandName} for attendance, students, staff, marksheets, reports, fee records, admin workflows, and custom school modules.`,
     priority: "0.95",
     changefreq: "weekly"
   },
   "website-erp-software.html": {
-    title: "Website + ERP Software | CodeNexus",
-    description: "Website + ERP software package by CodeNexus combining a public school website with ERP modules for attendance, student records, reports, marksheets, and admin workflows.",
+    title: `Website + ERP Software | ${brandName}`,
+    description: `Website + ERP software package by ${brandName} combining a public school website with ERP modules for attendance, student records, reports, marksheets, and admin workflows.`,
     priority: "0.95",
     changefreq: "weekly"
   },
   "website-maintenance.html": {
-    title: "Website Maintenance Packages | CodeNexus",
-    description: "Website maintenance packages by CodeNexus for prebuilt website management, content updates, bug fixes, redesign, rebuilds, new feature additions, and GitHub Pages support.",
+    title: `Website Maintenance Packages | ${brandName}`,
+    description: `Website maintenance packages by ${brandName} for prebuilt website management, content updates, bug fixes, redesign, rebuilds, new feature additions, and GitHub Pages support.`,
     priority: "0.95",
     changefreq: "weekly"
   },
   "privacy-policy.html": {
-    title: "Privacy Policy | CodeNexus",
-    description: "Read the CodeNexus privacy policy for project inquiries, contact details, WhatsApp communication, GitHub Pages hosting, and third-party services.",
+    title: `Privacy Policy | ${brandName}`,
+    description: `Read the ${brandName} privacy policy for project inquiries, contact details, WhatsApp communication, GitHub Pages hosting, and third-party services.`,
     priority: "0.4",
     changefreq: "yearly"
   },
   "terms-and-conditions.html": {
-    title: "Terms and Conditions | CodeNexus",
-    description: "Review CodeNexus terms and conditions for service inquiries, project scope, pricing, delivery, revisions, intellectual property, and client responsibilities.",
+    title: `Terms and Conditions | ${brandName}`,
+    description: `Review ${brandName} terms and conditions for service inquiries, project scope, pricing, delivery, revisions, intellectual property, and client responsibilities.`,
     priority: "0.4",
     changefreq: "yearly"
   },
   "service-policy.html": {
-    title: "Service Policy | CodeNexus",
-    description: "Understand the CodeNexus service policy for project scope, timelines, revisions, delivery, support, client content, and maintenance work.",
+    title: `Service Policy | ${brandName}`,
+    description: `Understand the ${brandName} service policy for project scope, timelines, revisions, delivery, support, client content, and maintenance work.`,
     priority: "0.4",
     changefreq: "yearly"
   },
   "disclaimer.html": {
-    title: "Disclaimer | CodeNexus",
-    description: "Read the CodeNexus disclaimer for service information, project estimates, demo links, third-party tools, and website content accuracy.",
+    title: `Disclaimer | ${brandName}`,
+    description: `Read the ${brandName} disclaimer for service information, project estimates, demo links, third-party tools, and website content accuracy.`,
     priority: "0.4",
     changefreq: "yearly"
   }
 };
 
 const imageAlts = {
-  "logo.png": "CodeNexus logo",
-  "logo01.png": "CodeNexus brand logo",
+  "company_logo.png": `${brandName} rocket logo`,
+  "logo.png": `${brandName} logo`,
+  "logo01.png": `${brandName} brand logo`,
   "web.jpeg": "Responsive web development service illustration",
   "AI.jpeg": "Artificial intelligence service illustration",
   "Robot.png": "Robotics and IoT service icon",
@@ -258,10 +261,10 @@ function pageUrl(file, meta) {
 }
 
 function getMeta(file, html) {
-  const fallbackTitle = (html.match(/<title>([^<]+)<\/title>/i) || [null, "CodeNexus"])[1].trim();
+  const fallbackTitle = (html.match(/<title>([^<]+)<\/title>/i) || [null, brandName])[1].trim();
   return {
     title: fallbackTitle,
-    description: "CodeNexus provides practical technology services for websites, school software, AI chatbots, Python automation, robotics, and digital business systems.",
+    description: `${brandName} provides practical technology services for websites, school software, AI chatbots, Python automation, robotics, and digital business systems.`,
     priority: "0.5",
     changefreq: "monthly",
     ...pageMeta[file]
@@ -285,8 +288,13 @@ function normalizeText(html) {
     .replace(/My Projects/g, "Client Work")
     .replace(/Showcasing Innovation, Technology & Creativity/g, "Websites, software tools, automation demos, and service-ready builds")
     .replace(/Follow Me/g, "Connect")
-    .replace(/CodeNexus is a technology-driven freelance brand founded by/g, "CodeNexus is a technology service studio led by")
-    .replace(/Follow CodeNexus/g, "Connect with CodeNexus");
+    .replace(/CodeNexus is a technology-driven freelance brand founded by/g, `${brandName} is a technology service studio led by`)
+    .replace(/CodeNexus is a technology service studio led by/g, `${brandName} is a technology service studio led by`)
+    .replace(/Follow CodeNexus/g, `Connect with ${brandName}`)
+    .replace(/(?<![\/_A-Za-z0-9-])CodeNexus(?![A-Za-z0-9-])/g, brandName)
+    .replace(/Pvt\. Ltd\.\./g, "Pvt. Ltd.")
+    .replace(/logo01\.png/g, logoFile)
+    .replace(/(?<!company_)logo\.png/g, logoFile);
 }
 
 function ensureTitleDescriptionCanonical(html, file, meta) {
@@ -318,7 +326,7 @@ function buildSchema(file, meta) {
   const organization = {
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#business`,
-    name: "CodeNexus",
+    name: brandName,
     url: `${baseUrl}/`,
     logo: defaultImage,
     image: defaultImage,
@@ -344,7 +352,7 @@ function buildSchema(file, meta) {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "CodeNexus service packages",
+      name: `${brandName} service packages`,
       itemListElement: serviceOffers.map((name) => ({
         "@type": "Offer",
         itemOffered: {
@@ -364,7 +372,7 @@ function buildSchema(file, meta) {
     isPartOf: {
       "@type": "WebSite",
       "@id": `${baseUrl}/#website`,
-      name: "CodeNexus",
+      name: brandName,
       url: `${baseUrl}/`
     },
     provider: {
@@ -404,7 +412,7 @@ function ensureSocialAndSchema(html, file, meta) {
   const url = pageUrl(file, meta);
   const block = [
     `<meta property="og:type" content="website" data-codenexus-seo>`,
-    `<meta property="og:site_name" content="CodeNexus" data-codenexus-seo>`,
+    `<meta property="og:site_name" content="${escapeAttr(brandName)}" data-codenexus-seo>`,
     `<meta property="og:title" content="${escapeAttr(meta.title)}" data-codenexus-seo>`,
     `<meta property="og:description" content="${escapeAttr(meta.description)}" data-codenexus-seo>`,
     `<meta property="og:url" content="${escapeAttr(url)}" data-codenexus-seo>`,
@@ -559,7 +567,7 @@ function processHtml(file) {
 <link rel="canonical" href="${escapeAttr(meta.canonical)}">
 <meta http-equiv="refresh" content="0; url=python-software.html">
 <title>${escapeAttr(meta.title)}</title>
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="${logoFile}">
 </head>
 <body>
 <main>
