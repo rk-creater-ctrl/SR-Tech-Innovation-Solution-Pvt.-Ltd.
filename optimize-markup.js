@@ -140,7 +140,7 @@ const pageMeta = {
 };
 
 const imageAlts = {
-  "company_logo.png": `${brandName} rocket logo`,
+  "company_logo.png": `${brandName} crowned shield logo`,
   "logo.png": `${brandName} logo`,
   "logo01.png": `${brandName} brand logo`,
   "web.jpeg": "Responsive web development service illustration",
