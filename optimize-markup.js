@@ -2,11 +2,11 @@ const fs = require("fs");
 const path = require("path");
 
 const root = __dirname;
-const baseUrl = "https://rk-creater-ctrl.github.io/CodeNexus";
+const baseUrl = "https://codenexus.vercel.app";
 const brandName = "SR Tech Innovation & Solution Pvt. Ltd.";
 const logoFile = "company_logo.png";
 const defaultImage = `${baseUrl}/${logoFile}`;
-const today = "2026-06-07";
+const today = "2026-06-27";
 
 const pageMeta = {
   "index.html": {
@@ -53,7 +53,7 @@ const pageMeta = {
   },
   "web_development.html": {
     title: `Web Development Services | ${brandName}`,
-    description: `Professional web development services by ${brandName} for responsive business websites, landing pages, portfolios, school websites, SEO setup, and GitHub Pages deployment.`,
+    description: `Professional web development services by ${brandName} for responsive business websites, landing pages, portfolios, school websites, SEO setup, and Vercel deployment.`,
     priority: "0.6",
     changefreq: "monthly"
   },
@@ -78,7 +78,7 @@ const pageMeta = {
   "pyhton.html": {
     title: `Python Development Moved | ${brandName}`,
     description: `The old Python development page now redirects to the current ${brandName} custom Python software service page.`,
-    canonical: `${baseUrl}/python-software.html`,
+    canonical: `${baseUrl}/python-software`,
     priority: "0.1",
     changefreq: "yearly",
     excludeFromSitemap: true
@@ -91,7 +91,7 @@ const pageMeta = {
   },
   "school-website.html": {
     title: `School Website Development | ${brandName}`,
-    description: `Affordable school website development by ${brandName} with admission pages, notices, gallery, academics, contact forms, WhatsApp inquiry, SEO setup, and GitHub Pages deployment.`,
+    description: `Affordable school website development by ${brandName} with admission pages, notices, gallery, academics, contact forms, WhatsApp inquiry, SEO setup, and Vercel deployment.`,
     priority: "0.95",
     changefreq: "weekly"
   },
@@ -109,13 +109,13 @@ const pageMeta = {
   },
   "website-maintenance.html": {
     title: `Website Maintenance Packages | ${brandName}`,
-    description: `Website maintenance packages by ${brandName} for prebuilt website management, content updates, bug fixes, redesign, rebuilds, new feature additions, and GitHub Pages support.`,
+    description: `Website maintenance packages by ${brandName} for prebuilt website management, content updates, bug fixes, redesign, rebuilds, new feature additions, and deployment support.`,
     priority: "0.95",
     changefreq: "weekly"
   },
   "privacy-policy.html": {
     title: `Privacy Policy | ${brandName}`,
-    description: `Read the ${brandName} privacy policy for project inquiries, contact details, WhatsApp communication, GitHub Pages hosting, and third-party services.`,
+    description: `Read the ${brandName} privacy policy for project inquiries, contact details, WhatsApp communication, Vercel hosting, and third-party services.`,
     priority: "0.4",
     changefreq: "yearly"
   },
@@ -257,7 +257,7 @@ function pageUrl(file, meta) {
     return meta.canonical;
   }
 
-  return file === "index.html" ? `${baseUrl}/` : `${baseUrl}/${file}`;
+  return file === "index.html" ? `${baseUrl}/` : `${baseUrl}/${file.replace(/\.html$/i, "")}`;
 }
 
 function getMeta(file, html) {
@@ -291,6 +291,12 @@ function normalizeText(html) {
     .replace(/CodeNexus is a technology-driven freelance brand founded by/g, `${brandName} is a technology service studio led by`)
     .replace(/CodeNexus is a technology service studio led by/g, `${brandName} is a technology service studio led by`)
     .replace(/Follow CodeNexus/g, `Connect with ${brandName}`)
+    .replace(/GitHub Pages deployment/g, "Vercel deployment")
+    .replace(/GitHub Pages launches/g, "Vercel launches")
+    .replace(/GitHub Pages support/g, "deployment support")
+    .replace(/GitHub Pages links/g, "live website links")
+    .replace(/GitHub Pages, /g, "")
+    .replace(/GitHub Pages/g, "Vercel")
     .replace(/(?<![\/_A-Za-z0-9-])CodeNexus(?![A-Za-z0-9-])/g, brandName)
     .replace(/Pvt\. Ltd\.\./g, "Pvt. Ltd.")
     .replace(/logo01\.png/g, logoFile)
@@ -600,14 +606,14 @@ function processHtml(file) {
 
 function updateSitemap(files) {
   const entries = files
-    .filter((file) => !pageMeta[file]?.excludeFromSitemap)
+    .filter((file) => pageMeta[file] && !pageMeta[file].excludeFromSitemap)
     .sort((a, b) => {
       const priority = Number(pageMeta[b]?.priority || 0.5) - Number(pageMeta[a]?.priority || 0.5);
       return priority || a.localeCompare(b);
     })
     .map((file) => {
       const meta = pageMeta[file] || {};
-      const loc = file === "index.html" ? `${baseUrl}/` : `${baseUrl}/${file}`;
+      const loc = pageUrl(file, meta);
       return `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${today}</lastmod>
@@ -626,6 +632,16 @@ ${entries}
   fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);
 }
 
+function updateRobots() {
+  const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+
+  fs.writeFileSync(path.join(root, "robots.txt"), robots);
+}
+
 function main() {
   if (process.argv.includes("--check-links")) {
     checkLocalReferences();
@@ -638,9 +654,10 @@ function main() {
 
   const changed = files.filter(processHtml);
   updateSitemap(files);
+  updateRobots();
 
   console.log(`Processed ${files.length} HTML files.`);
-  console.log(`Updated ${changed.length} HTML files and sitemap.xml.`);
+  console.log(`Updated ${changed.length} HTML files, sitemap.xml, and robots.txt.`);
 }
 
 main();

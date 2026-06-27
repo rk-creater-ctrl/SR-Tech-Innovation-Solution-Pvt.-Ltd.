@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rk-creater-ctrl.github.io/CodeNexus/sitemap.xml
+Sitemap: https://codenexus.vercel.app/sitemap.xml

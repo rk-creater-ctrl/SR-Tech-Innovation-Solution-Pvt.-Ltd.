@@ -1,0 +1,10 @@
+{
+  "name": "codenexus-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static website for SR Tech Innovation & Solution Pvt. Ltd.",
+  "scripts": {
+    "seo": "node optimize-markup.js",
+    "check": "node --check optimize-markup.js && node optimize-markup.js --check-links"
+  }
+}
